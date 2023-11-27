@@ -1,10 +1,11 @@
 import React from 'react'
 import { StyleSheet, Text, TextInput, View } from 'react-native'
 
-export default function UsernameInput() {
+export default function UsernameInput({onChangeUsername}) {
+
   return (
     <View>
-        <TextInput  style={style.username_input} placeholder='Username'></TextInput>
+        <TextInput onChangeText={newText => onChangeUsername(newText)} placeholderTextColor='black' style={style.username_input} placeholder='Username'></TextInput>
     </View>
   )
 }
@@ -14,7 +15,8 @@ const style = StyleSheet.create({
         borderBottomWidth: 1,
         borderColor: '#ccc',
         borderRadius: 10,
-        marginVertical: 10,
-        padding: 10
+        color: 'black',
+        marginVertical: 0,
+        paddingHorizontal: 10,
     },
 })

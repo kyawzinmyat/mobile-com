@@ -1,29 +1,35 @@
 import React, { useState } from 'react'
-import { TouchableOpacity, Text, StyleSheet } from 'react-native'
+import { TouchableOpacity, View, Text, StyleSheet } from 'react-native'
 
-export default function PrimaryButton() {
+export default function PrimaryButton(props) {
 
-
+    const style = StyleSheet.create(
+        {
+            login_button: {
+                justifyContent: 'center',
+                flexDirection: 'row',
+                margin: props.margin || 20,
+                height: props.height || 40,
+                width: props.width || 100,
+                backgroundColor: props.bg || 'white',
+                justifyContent: 'center',
+                alignItems: 'center',
+                marginLeft: 'auto',
+                marginRight: 'auto'
+            },
+            login_button_text: {
+                fontSize: 15,
+                fontWeight: '500',
+                color: 'black',
+            },
+        }
+    )
 
     return (
-        <TouchableOpacity style={style.login_button}>
-            <Text style={style.login_button_text}>Login</Text>
-        </TouchableOpacity>
+        <View style={{flex: 1}}>
+            <TouchableOpacity style={style.login_button}  onPress={props.onPress}>
+                {props.children}
+            </TouchableOpacity>
+        </View>
     )
 }
-
-
-const style = StyleSheet.create(
-    {
-        login_button: {
-            flex: 1,
-            justifyContent: 'center',
-            flexDirection: 'row',
-            margin: 50
-        },
-        login_button_text: {
-            fontSize: 15,
-            color: 'black'
-        },
-    }
-)
