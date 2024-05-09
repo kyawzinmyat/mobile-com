@@ -4,7 +4,7 @@ import React, { useState } from 'react'
 import Octicons from 'react-native-vector-icons/Octicons'
 import { Card } from 'react-native-paper';
 
-export default function ProductCard({ product, navigation, twoCol }) {
+export default function ProductCard({ product, navigation, twoCol, footer }) {
 
     const style = StyleSheet.create(
         {
@@ -79,13 +79,12 @@ export default function ProductCard({ product, navigation, twoCol }) {
             <Text style={style.product_title}>
                 {product.title}
             </Text>
-            <View style={style.product_information_container}>
+            {
+                footer && <View style={style.product_information_container}>
                 <Text style={style.product_category}>{product.category_name}</Text>
                 <Text style={style.product_price}>$ {product.price}</Text>
-                {/* {!twoCol && <View style={style.circle_plus}>
-                    <FontAwesome6 name='circle-plus' size={55} color='black' />
-                </View>} */}
             </View>
+            }
         </View>
     )
 }

@@ -87,7 +87,7 @@ export default function Product({ navigation }) {
     }
 
     const renderItem = ({ item }) => {
-        return <ProductCard navigation={navigation} product={item}></ProductCard>
+        return <ProductCard footer navigation={navigation} product={item}></ProductCard>
     }
 
     return (

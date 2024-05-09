@@ -43,7 +43,8 @@ export const CartProvider =  ({ children }) => {
         else orders.push(
             {
                 ...product,
-                quantity: 1
+                quantity: 1,
+                total: product.price
             }
         )
         await AsyncStorage.setItem('orders'+userID, JSON.stringify(
@@ -68,7 +69,7 @@ export const CartProvider =  ({ children }) => {
     const increaseItem = async (itemId) => {
         const orders =  cartItems.map(
             item => {
-                if (itemId == item.id) return {...item, quantity: item.quantity + 1}
+                if (itemId == item.id) return {...item, quantity: item.quantity + 1, total: parseFloat(item.total) + parseFloat(item.price)}
                 return {...item}
             }
         )
@@ -84,12 +85,11 @@ export const CartProvider =  ({ children }) => {
         const orders =  cartItems.map(
             item => {
                 if (itemId === item.id) {
-                    if (item.quantity - 1 >= 0) return {...item, quantity: item.quantity - 1}
+                    if (item.quantity - 1 >= 0) return {...item, quantity: item.quantity - 1, total: parseFloat(item.total) - parseFloat(item.price)}
                 }
                 return {...item}
             }
         )
-        console.log(orders)
         setCartItems(orders)
         setCartCount(computeCartCount(orders))
         setSubTotal(computeSubtotal(orders))

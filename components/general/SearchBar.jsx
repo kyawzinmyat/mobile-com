@@ -8,7 +8,7 @@ export default function SearchBar({navigation}) {
         <View style={style.searchbar_container}>
             <View style={style.searchbar_subcontainer}>
                 <FontAwesome6 paddingRight={15} paddingLeft={10} name={'magnifying-glass'} size={16} color={'black'} />
-                <TextInput placeholderTextColor={'black'} style={style.searchbar_textinput} placeholder='Search...'></TextInput>
+                <TextInput placeholderTextColor={'black'} style={style.searchbar_textinput} placeholder='Search Products ...'></TextInput>
             </View>
             <ShoppingCart navigation={navigation}></ShoppingCart>
         </View>

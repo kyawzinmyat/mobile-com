@@ -33,6 +33,7 @@ const style = StyleSheet.create(
             borderRadius: 10,
             marginBottom: 8,
             justifyContent: 'center',
+            marginLeft: 8
         },
         searchbar_subcontainer: {
             flexDirection: 'row',
@@ -41,6 +42,7 @@ const style = StyleSheet.create(
             borderRadius: 16,
             fontSize: 20,
             gap: 10,
+            color: 'black',
             padding: 8,
         }
     }

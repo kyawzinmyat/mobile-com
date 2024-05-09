@@ -89,7 +89,7 @@ export default function ProductCartCard({ item, navigation }) {
                         <ProductCartCardDetailAccordian></ProductCartCardDetailAccordian>
                     </TouchableOpacity>
                     
-                    <Text style={style.price}>$ {item.price}</Text>
+                    <Text style={style.price}>$ {item.total}</Text>
                 </View>
                 
             </View>

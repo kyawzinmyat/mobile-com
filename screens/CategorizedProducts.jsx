@@ -30,10 +30,9 @@ export default function CategorizedProducts({ navigation, route }) {
             headers: {
                 "Content-Type": "application/json",
             },
-            body:
-            {
-                subCategory: category.id
-            }
+            body: JSON.stringify({
+                sub_category: category.id
+            })
         });
         setProductsLoaded(true)
         var data = await response.json();
@@ -68,26 +67,22 @@ export default function CategorizedProducts({ navigation, route }) {
     }
 
     const fetchProductsOnEndReach = async () => {
-        if (!products) {
             let response = await fetch(API_HOST + `?page=${page}`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
                 },
-                body: {
-                    subCategory: category.id
-                }
+                body: JSON.stringify({
+                    sub_category: category.id
+                })
             });
-            setProductsLoaded(true)
             var data = await response.json();
             if (response.status === 200) {
-                setProductsLoaded(false)
                 if (data.next == null || data == null) setIsEnd(true)
                 else setIsEnd(false)
                 setPage(page + 1)
                 setProducts([...products, ...data.results])
-            } else setProductsLoaded(false)
-        }
+            }
     }
 
     return (
@@ -104,7 +99,7 @@ export default function CategorizedProducts({ navigation, route }) {
                         keyExtractor={item => item.id}
                         numColumns={2}
                         onEndReached={fetchProductsOnEndReach}
-                        onEndReachedThreshold={0.1}
+                        onEndReachedThreshold={0.3}
                         ListFooterComponent={!isEnd && renderFooter}>
 
                     </FlatList>}
